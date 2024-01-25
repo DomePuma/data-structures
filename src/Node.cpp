@@ -5,7 +5,7 @@ namespace Data
     template<class Datatype>
     inline Node<Datatype>::Node()
     {
-        this->_data = Datatype(0)
+        this->_data = Datatype(0);
         this->_next = nullptr;
     }
 

@@ -80,11 +80,11 @@ namespace Data {
         return this->_array[index];
     }
 
-
-    // Array::operator Datatype* ()
-    // {
-
-    // }
+    template<class Datatype>
+    Array<Datatype>::operator Datatype* ()
+    {
+        return this->_array;
+    }
 
     template class Array<int>;
     template class Array<float>;
