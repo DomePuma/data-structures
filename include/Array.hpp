@@ -26,8 +26,6 @@ namespace Data {
         Datatype& operator[] (int index);
 
         operator Datatype* ();
-
-        // operator int* ();
     };
     
 }

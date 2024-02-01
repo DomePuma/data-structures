@@ -1,17 +1,18 @@
-#ifndef _LINKEDLIST_HPP
-#define _LINKEDLIST_HPP
+#ifndef _LINKED_LIST_HPP_
+#define _LINKED_LIST_HPP_
 
-#include "Node.hpp"
+#include "SimpleNode.hpp"
 
 namespace Data {
-    template<class>
+    template <class>
     class ListIterator;
 
     template<class Datatype>
-    class LinkedList{
+    class LinkedList
+    {
         public:
-        Node<Datatype>* _head;
-        Node<Datatype>* _tail;
+        SimpleNode<Datatype>* _head;
+        SimpleNode<Datatype>* _tail;
         int _count;
 
         LinkedList();
@@ -19,13 +20,14 @@ namespace Data {
 
         void append(Datatype data);
         void prepend(Datatype data);
+        void insert(ListIterator<Datatype>& itr, Datatype data);
 
         void removeHead();
         void removeTail();
+        void remove(ListIterator<Datatype>& itr);
 
-        ListIterator<Datatype> getInterator();
-
+        ListIterator<Datatype> getIterator();
     };
 }
 
-#endif //_LINKEDLIST_HPP
+#endif //_LINKED_LIST_HPP_

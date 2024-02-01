@@ -1,35 +1,30 @@
-#ifndef _LIST_ITERATOR_HPP
-#define _LIST_ITERATOR_HPP
+#ifndef _LIST_ITERATOR_HPP_
+#define _LIST_ITERATOR_HPP_
 
-#include "Node.hpp"
+#include "LinkedList.hpp"
 
-namespace Data
+namespace Data 
 {
     template<class>
     class LinkedList;
-
+    
     template<class Datatype>
     class ListIterator
     {
         public:
-        Node<Datatype>* _node;
+        SimpleNode<Datatype>* _node;
         LinkedList<Datatype>* _list;
 
-        ListIterator(LinkedList<Datatype>& list = nullptr);
-        
         ListIterator(LinkedList<Datatype>* list = nullptr);
+        ListIterator(LinkedList<Datatype>& list = nullptr);
 
-        void Start();
-        void Next();
-        
+        void start();
+        void forth();
+
         Datatype& item();
-
         bool isValid();
         bool hasNext();
-
-
-
     };
 }
 
-#endif //_LIST_ITERATOR_HPP
+#endif // _LIST_ITERATOR_HPP_

@@ -1,24 +1,24 @@
-#include "ListIterator.hpp"
-#include "LinkedList.hpp"
+#include "DoubleListIterator.hpp"
+#include "DoubleLinkedList.hpp"
 
 namespace Data
 {
     template <class Datatype>
-    inline ListIterator<Datatype>::ListIterator(LinkedList<Datatype>* list)
+    inline DoubleListIterator<Datatype>::DoubleListIterator(DoubleLinkedList<Datatype>* list)
     {
         this->_list = list;
         this->_node = list->_head;
     }
 
     template <class Datatype>
-    inline ListIterator<Datatype>::ListIterator(LinkedList<Datatype>& list)
+    inline DoubleListIterator<Datatype>::DoubleListIterator(DoubleLinkedList<Datatype>& list)
     {
         this->_list = &list;
         this->_node = list._head;
     }
 
     template <class Datatype>
-    void ListIterator<Datatype>::start()
+    void DoubleListIterator<Datatype>::start()
     {
         if(this->_list != nullptr)
         {
@@ -27,7 +27,7 @@ namespace Data
     }
 
     template <class Datatype>
-    void ListIterator<Datatype>::forth()
+    void DoubleListIterator<Datatype>::forth()
     {
         if(this->_node != nullptr)
         {
@@ -36,22 +36,28 @@ namespace Data
     }
 
     template <class Datatype>
-    Datatype& ListIterator<Datatype>::item()
+    Datatype& DoubleListIterator<Datatype>::item()
     {
         return this->_node->_data;
     }
 
     template <class Datatype>
-    bool ListIterator<Datatype>::isValid()
+    bool DoubleListIterator<Datatype>::isValid()
     {
         return this->_node != nullptr;
     }
 
     template <class Datatype>
-    bool ListIterator<Datatype>::hasNext()
+    bool DoubleListIterator<Datatype>::hasNext()
     {
         return this->_node != nullptr && this->_node->_next != nullptr;
     }
 
-    template class ListIterator<int>;
+    template <class Datatype>
+    bool DoubleListIterator<Datatype>::hasPrevious()
+    {
+        return this->_node != nullptr && this->_node->_prev != nullptr;
+    }
+
+    template class DoubleListIterator<int>;
 }

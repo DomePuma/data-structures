@@ -1,10 +1,10 @@
-#include "LinkedList.hpp"
-#include "ListIterator.hpp"
+#include "DoubleLinkedList.hpp"
+#include "DoubleListIterator.hpp"
 
 namespace Data
 {
     template<class Datatype>
-    inline LinkedList<Datatype>::LinkedList()
+    inline DoubleLinkedList<Datatype>::DoubleLinkedList()
     {
         this->_head = nullptr;
         this->_tail = nullptr;
@@ -12,10 +12,10 @@ namespace Data
     }
 
     template<class Datatype>
-    inline LinkedList<Datatype>::~LinkedList ()
+    inline DoubleLinkedList<Datatype>::~DoubleLinkedList();
     {
-        SimpleNode<Datatype>* iterator = this->_head;
-        SimpleNode<Datatype>* next;
+        DoubleNode<Datatype>* iterator = this->_head;
+        DoubleNode<Datatype>* next;
         while(iterator != nullptr)
         {
             next = iterator->_next;
@@ -26,12 +26,11 @@ namespace Data
     }
 
     template<class Datatype>
-    void LinkedList<Datatype>::append(Datatype data)
+    void DoubleLinkedList<Datatype>::append(Datatype data)
     {
-        if(this->_head == nullptr)
+        if(this->_tail == nullptr)
         {
-            this->_head = this->_tail = new SimpleNode<Datatype>;
-            this->_head->_data = data;
+            this->_head = this->_tail = new DoubleNode<Datatype>(data);
         } 
         else
         {
@@ -43,22 +42,22 @@ namespace Data
     }
 
     template<class Datatype>
-    void LinkedList<Datatype>::prepend(Datatype data)
+    void DoubleLinkedList<Datatype>::prepend(Datatype data)
     {
-        SimpleNode<Datatype>* newNode = new SimpleNode<Datatype>;
-        newNode->_data = data;
-        newNode->_next = this->_head;
-        this->_head = newNode;
-
-        if(this->_tail == nullptr)
+        if(this->_head == nullptr)
         {
-            this->_tail = this->_head;
+            this->_tail = this->_head = new DoubleNode<Datatype>(data);
         }
+        else
+        {
+            
+        }
+
         this->_count++;
     }
 
     template<class Datatype>
-    void LinkedList<Datatype>::insert(ListIterator<Datatype>& itr, Datatype data)
+    void DoubleLinkedList<Datatype>::insertAfter(DoubleListIterator<Datatype>& itr, Datatype data)
     {
         if(itr._list != this) { return; }
         if(itr._node != nullptr)
@@ -77,7 +76,26 @@ namespace Data
     }
 
     template<class Datatype>
-    void LinkedList<Datatype>::removeHead()
+    void DoubleLinkedList<Datatype>::insertBefore(DoubleListIterator<Datatype>& itr, Datatype data)
+    {
+        if(itr._list != this) { return; }
+        if(itr._node != nullptr)
+        {
+            itr._node->insertBefore(data);
+            if(itr._node == this->_tail)
+            {
+                this->_tail = itr._node->_prev;
+            }
+            this->_count++;
+        }
+        else
+        {
+            this->prepend(data);
+        }
+    }
+
+    template<class Datatype>
+    void DoubleLinkedList<Datatype>::removeHead()
     {
         SimpleNode<Datatype>* node = nullptr;
         if(this->_head != nullptr)
@@ -97,7 +115,7 @@ namespace Data
     }
 
     template<class Datatype>
-    void LinkedList<Datatype>::removeTail()
+    void DoubleLinkedList<Datatype>::removeTail()
     {
         SimpleNode<Datatype>* node = this->_head;
         if(this->_head != nullptr)
@@ -124,7 +142,7 @@ namespace Data
     }
 
     template<class Datatype>
-    void LinkedList<Datatype>::remove(ListIterator<Datatype>& itr)
+    void DoubleLinkedList<Datatype>::remove(DoubleListIterator<Datatype>& itr)
     {
         SimpleNode<Datatype>* node = this->_head;
         // Itr doesn't belong to this list
@@ -153,17 +171,18 @@ namespace Data
             }
 
             
-            delete node->_next;
+            delete node->
+            _next;
             node->_next = itr._node;
         }
     }
 
     template <class Datatype>
-    ListIterator<Datatype> LinkedList<Datatype>::getIterator()
+    DoubleListIterator<Datatype> DoubleLinkedList<Datatype>::getIterator()
     {
-        return ListIterator<Datatype>(this);
+        return DoubleListIterator<Datatype>(this);
     }
 
 
-    template class LinkedList<int>;
+    template class DoubleLinkedList<int>;
 }
