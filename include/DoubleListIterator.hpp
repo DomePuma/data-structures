@@ -1,7 +1,7 @@
 #ifndef _DOUBLE_LIST_ITERATOR_HPP_
 #define _DOUBLE_LIST_ITERATOR_HPP_
 
-#include "DoubleLinkedList.hpp"
+#include "DoubleNode.hpp"
 
 namespace Data 
 {

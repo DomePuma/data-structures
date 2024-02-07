@@ -20,14 +20,14 @@ namespace Data {
 
         void append(Datatype data);
         void prepend(Datatype data);
-        void insertAfter(DoubleLinkedList<DataType>& itr, DataType data);
-        void insertBefore(ListIterator<Datatype>& itr, Datatype data);
+        void insertAfter(DoubleListIterator<Datatype>& itr, Datatype data);
+        void insertBefore(DoubleListIterator<Datatype>& itr, Datatype data);
         
         void removeHead();
         void removeTail();
-        void remove(ListIterator<Datatype>& itr);
+        void remove(DoubleListIterator<Datatype>& itr);
 
-        ListIterator<Datatype> getIterator();
+        DoubleListIterator<Datatype> getIterator();
     };
 }
 

@@ -13,7 +13,7 @@ namespace Data
         
         Datatype _data;
         Node* _parent;
-        DLinkedList<Node*> _children;
+        DoubleLinkedList<Node*> _children;
 
         Tree();
         ~Tree();

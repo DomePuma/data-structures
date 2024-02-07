@@ -50,14 +50,15 @@ namespace Data
         }
         else
         {
-            
+            this->_tail->insertBefore(data);
+            this->_tail = this->_head->_prev;
         }
 
         this->_count++;
     }
-
+    
     template<class Datatype>
-    void DoubleLinkedList<Datatype>::insertAfter(DoubleLinkedList<Datatype>& itr, Datatype data)
+    void DoubleLinkedList<Datatype>::insertAfter(DoubleListIterator<Datatype>& itr, Datatype data)
     {
         if(itr._list != this) { return; }
         if(itr._node != nullptr)
@@ -97,7 +98,7 @@ namespace Data
     template<class Datatype>
     void DoubleLinkedList<Datatype>::removeHead()
     {
-        SimpleNode<Datatype>* node = nullptr;
+        DoubleNode<Datatype>* node = nullptr;
         if(this->_head != nullptr)
         {
             node = this->_head->_next;
@@ -117,7 +118,7 @@ namespace Data
     template<class Datatype>
     void DoubleLinkedList<Datatype>::removeTail()
     {
-        SimpleNode<Datatype>* node = this->_head;
+        DoubleNode<Datatype>* node = this->_head;
         if(this->_head != nullptr)
         {
             if(this->_head == this->_tail)
@@ -144,7 +145,7 @@ namespace Data
     template<class Datatype>
     void DoubleLinkedList<Datatype>::remove(DoubleListIterator<Datatype>& itr)
     {
-        SimpleNode<Datatype>* node = this->_head;
+        DoubleNode<Datatype>* node = this->_head;
         // Itr doesn't belong to this list
         if(itr._list != this) { return; }
 

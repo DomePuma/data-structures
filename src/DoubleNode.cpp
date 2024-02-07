@@ -31,7 +31,7 @@ namespace Data
         newDoubleNode->_prev = this;
         this->_next = newDoubleNode;
 
-        if(newDoubleNode-> != nullptr)
+        if(newDoubleNode->_next != nullptr)
         {
             newDoubleNode->_next->_prev = newDoubleNode;
         }
@@ -41,7 +41,7 @@ namespace Data
     template<class Datatype>
     void DoubleNode<Datatype>::insertBefore(Datatype data)
     {
-        DoubleNode<Datatype>* newDoubleNode = DoubleNode<Datatype>(data);
+        DoubleNode<Datatype>* newDoubleNode = new DoubleNode<Datatype>(data);
         newDoubleNode->_prev = this->_prev;
         newDoubleNode->_next = this;
         this->_prev = newDoubleNode;

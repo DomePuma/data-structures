@@ -6,11 +6,13 @@
 namespace Data
 {
     template <class T>
-    class NodeFactory {
-    public:
-    static SimpleNode<T>* createNode(T data) {
-        return new DoubleNode<T>(data);
-    }
+    class NodeFactory 
+    {
+        public:
+        static SimpleNode<T>* createNode(T data) 
+        {
+            return new SimpleNode<T>(data);
+        }
     };
 }
 
