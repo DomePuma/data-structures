@@ -12,7 +12,7 @@ namespace Data
     }
 
     template<class Datatype>
-    inline DoubleLinkedList<Datatype>::~DoubleLinkedList();
+    inline DoubleLinkedList<Datatype>::~DoubleLinkedList()
     {
         DoubleNode<Datatype>* iterator = this->_head;
         DoubleNode<Datatype>* next;
@@ -57,7 +57,7 @@ namespace Data
     }
 
     template<class Datatype>
-    void DoubleLinkedList<Datatype>::insertAfter(DoubleListIterator<Datatype>& itr, Datatype data)
+    void DoubleLinkedList<Datatype>::insertAfter(DoubleLinkedList<Datatype>& itr, Datatype data)
     {
         if(itr._list != this) { return; }
         if(itr._node != nullptr)

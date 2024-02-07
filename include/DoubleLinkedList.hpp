@@ -5,7 +5,7 @@
 
 namespace Data {
     template <class>
-    class ListIterator;
+    class DoubleListIterator;
 
     template<class Datatype>
     class DoubleLinkedList
@@ -20,7 +20,7 @@ namespace Data {
 
         void append(Datatype data);
         void prepend(Datatype data);
-        void insertAfter(ListIterator<Datatype>& itr, Datatype data);
+        void insertAfter(DoubleLinkedList<DataType>& itr, DataType data);
         void insertBefore(ListIterator<Datatype>& itr, Datatype data);
         
         void removeHead();
