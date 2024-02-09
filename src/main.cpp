@@ -40,7 +40,7 @@ int main()
 
     // Node
 
-    SimpleNode<int>* n = NodeFactory<int>::createNode(10);
+    //SimpleNode<int>* n = NodeFactory<int>::createNode(10);
 
 
     LinkedList<int> list;
